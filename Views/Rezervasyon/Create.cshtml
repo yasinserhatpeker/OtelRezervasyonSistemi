@@ -1,0 +1,111 @@
+@model OtelRezervasyon.Models.Rezervasyon
+
+@{
+    ViewData["Title"] = "Yeni Rezervasyon";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Yeni Rezervasyon Oluştur</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" asp-controller="Rezervasyon" method="post">
+                        @Html.AntiForgeryToken()
+
+                        @if (ViewData.ModelState.ErrorCount > 0)
+                        {
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                    {
+                                        <li>@error.ErrorMessage</li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+
+                        <div class="mb-3">
+                            <label asp-for="MusteriId" class="form-label">Müşteri</label>
+                            <select asp-for="MusteriId" class="form-select" asp-items="ViewBag.MusteriId">
+                                <option value="">-- Müşteri Seçiniz --</option>
+                            </select>
+                            <span asp-validation-for="MusteriId" class="text-danger"></span>
+                            <small class="form-text text-muted">
+                                * Sadece rezervasyonu olmayan müşteriler listelenmektedir.
+                            </small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="OdaId" class="form-label">Oda</label>
+                            <select asp-for="OdaId" class="form-select" asp-items="ViewBag.OdaId">
+                                <option value="">-- Oda Seçiniz --</option>
+                            </select>
+                            <span asp-validation-for="OdaId" class="text-danger"></span>
+                            <small class="form-text text-muted">
+                                * Sadece rezerve edilmemiş odalar listelenmektedir.
+                            </small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="GirisTarihi" class="form-label">Giriş Tarihi</label>
+                            <input asp-for="GirisTarihi" type="datetime-local" class="form-control" />
+                            <span asp-validation-for="GirisTarihi" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CikisTarihi" class="form-label">Çıkış Tarihi</label>
+                            <input asp-for="CikisTarihi" type="datetime-local" class="form-control" />
+                            <span asp-validation-for="CikisTarihi" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Geri Dön
+                            </a>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <i class="bi bi-save"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+
+                    <script>
+                        console.log('Inline script loaded - IMMEDIATE');
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log('Script after container loaded');
+
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM Content Loaded');
+
+        var form = document.querySelector('form');
+        if (form) {
+            console.log('Form found!');
+
+            form.addEventListener('submit', function(e) {
+                console.log('===== FORM SUBMIT DETECTED =====');
+                console.log('MusteriId:', document.getElementById('MusteriId').value);
+                console.log('OdaId:', document.getElementById('OdaId').value);
+                console.log('GirisTarihi:', document.getElementById('GirisTarihi').value);
+                console.log('CikisTarihi:', document.getElementById('CikisTarihi').value);
+            });
+
+            var submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function(e) {
+                    console.log('Submit button CLICKED');
+                });
+            }
+        } else {
+            console.error('ERROR: Form not found!');
+        }
+    });
+</script>

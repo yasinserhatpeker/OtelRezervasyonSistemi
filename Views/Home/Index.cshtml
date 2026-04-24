@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="text-center">
+    <div class="jumbotron bg-light p-5 rounded-3 shadow-lg mb-5">
+        <h1 class="display-4 fw-bold text-primary">
+            <i class="bi bi-building"></i> Otel Rezervasyon Sistemi
+        </h1>
+        <p class="lead mt-4 text-muted">
+            Otel işletmenizi kolayca yönetin. Odalarınızı, müşterilerinizi ve rezervasyonlarınızı tek bir yerden takip edin.
+        </p>
+        <hr class="my-4">
+        <p class="text-secondary">
+            Hızlı erişim için aşağıdaki bölümlerden birini seçin
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 hover-card">
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-door-open display-1 text-primary"></i>
+                    </div>
+                    <h3 class="card-title fw-bold mb-3">Odalar</h3>
+                    <p class="card-text text-muted mb-4">
+                        Otel odalarını görüntüleyin, yeni oda ekleyin veya mevcut oda bilgilerini güncelleyin.
+                    </p>
+                    <a asp-controller="Oda" asp-action="Index" class="btn btn-primary btn-lg px-4 rounded-pill">
+                        <i class="bi bi-arrow-right-circle"></i> Odaları Görüntüle
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 hover-card">
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-people display-1 text-success"></i>
+                    </div>
+                    <h3 class="card-title fw-bold mb-3">Müşteriler</h3>
+                    <p class="card-text text-muted mb-4">
+                        Müşteri kayıtlarını yönetin, yeni müşteri ekleyin veya müşteri bilgilerini düzenleyin.
+                    </p>
+                    <a asp-controller="Musteri" asp-action="Index" class="btn btn-success btn-lg px-4 rounded-pill">
+                        <i class="bi bi-arrow-right-circle"></i> Müşterileri Görüntüle
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 hover-card">
+                <div class="card-body p-5 text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-calendar-check display-1 text-danger"></i>
+                    </div>
+                    <h3 class="card-title fw-bold mb-3">Rezervasyonlar</h3>
+                    <p class="card-text text-muted mb-4">
+                        Rezervasyonları takip edin, yeni rezervasyon oluşturun veya mevcut rezervasyonları yönetin.
+                    </p>
+                    <a asp-controller="Rezervasyon" asp-action="Index" class="btn btn-danger btn-lg px-4 rounded-pill">
+                        <i class="bi bi-arrow-right-circle"></i> Rezervasyonları Görüntüle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 p-4 bg-light rounded-3 shadow-sm">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="mb-2">
+                    <i class="bi bi-info-circle text-primary"></i> Sistem Özellikleri
+                </h4>
+                <p class="text-muted mb-0">
+                    Modern ve kullanıcı dostu arayüz ile otel yönetim süreçlerinizi dijitalleştirin.
+                </p>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <span class="badge bg-primary p-3 rounded-pill">
+                    <i class="bi bi-star-fill"></i> ASP.NET MVC
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .jumbotron {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+    }
+
+    .card-body i.display-1 {
+        font-size: 5rem;
+    }
+</style>
