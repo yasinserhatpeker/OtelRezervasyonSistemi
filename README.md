@@ -1,51 +1,76 @@
-🏨 Otel Rezervasyon Yönetim Sistemi (MVC)
-Bu proje, bir üniversite dönem ödevi kapsamında .NET 8 MVC mimarisi kullanılarak geliştirilmiştir. Projede müşteri yönetimi, oda yönetimi ve rezervasyon işlemleri modern web standartlarına uygun olarak gerçekleştirilmektedir.
+# 🏨 Otel Rezervasyon Yönetim Sistemi (MVC)
 
-🚀 Öne Çıkan Özellikler
-Bire-Bir (1:1) İlişki Mantığı: Veri tutarlılığını korumak adına, bir müşteri aynı anda sadece bir odaya, bir oda ise aynı anda sadece bir müşteriye rezerve edilebilir.
+Bu proje, .NET 8 MVC mimarisi kullanılarak geliştirilmiş kapsamlı bir otel yönetim sistemidir.  
+Müşteri kayıtları, oda yönetimi ve rezervasyon süreçlerini uçtan uca yönetmeyi sağlar.
 
-Akıllı Filtreleme: Rezervasyon oluşturma ekranında, halihazırda dolu olan odalar ve aktif rezervasyonu bulunan müşteriler otomatik olarak listeden gizlenir.
+---
 
-Güçlü Hata Yönetimi: Hem veritabanı seviyesinde (Unique Index) hem de uygulama seviyesinde (Try-Catch & Validation) hata kontrolleri yapılmıştır.
+## 🚀 Öne Çıkan Özellikler
 
-Modern Arayüz: Tasarımda Bootstrap ve Bootstrap Icons kullanılarak responsive bir deneyim sağlanmıştır.
+### 🔹 1:1 İlişki Mantığı
+Veri tutarlılığını korumak adına:
+- Bir müşteri aynı anda sadece **bir odaya**
+- Bir oda ise aynı anda sadece **bir müşteriye**  
+rezerve edilebilir.
 
-Docker Entegrasyonu: Veritabanı kurulumu ile uğraşmamak için Azure SQL Edge (Apple Silicon/M mimarisi uyumlu) Docker desteği eklenmiştir.
+---
 
-🛠️ Kullanılan Teknolojiler
-Backend: .NET 8 MVC, Entity Framework Core
+### 🔹 Akıllı Filtreleme
+Rezervasyon ekranında:
+- Halihazırda rezervasyonu bulunan müşteriler
+- Dolu olan odalar  
 
-Veritabanı: MS SQL Server (Azure SQL Edge)
+otomatik olarak listeden gizlenir.
 
-Frontend: Bootstrap 5, Razor Pages, JavaScript/jQuery
+---
 
-Konteynerleştirme: Docker & Docker Compose
+### 🔹 Güçlü Hata Yönetimi
+- Veritabanı kısıtlamaları (**Unique Index**)
+- Form doğrulamaları (**Validation**)  
 
-📦 Kurulum ve Çalıştırma
-Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları sırasıyla takip edin:
+sayesinde hatalı veri girişi engellenmiştir.
 
-1. Veritabanını Başlatın
-Proje dizininde terminali açın ve Docker container'ını ayağa kaldırın:
+---
 
-Bash
+### 🔹 Modern Arayüz
+- **Bootstrap 5**
+- **Bootstrap Icons**
+
+kullanılarak responsive ve kullanıcı dostu bir arayüz sağlanmıştır.
+
+---
+
+### 🔹 Docker Desteği
+- **Azure SQL Edge** imajı sayesinde  
+- Windows ve macOS (Apple Silicon M1/M2/M3) cihazlarda sorunsuz çalışır.
+
+---
+
+## 🛠️ Kullanılan Teknolojiler
+
+### Backend
+- .NET 8 MVC
+- Entity Framework Core
+
+### Veritabanı
+- MS SQL Server (Azure SQL Edge)
+
+### Frontend
+- Bootstrap 5
+- Razor Pages
+- JavaScript / jQuery
+
+### Konteynerleştirme
+- Docker
+- Docker Compose
+
+---
+
+## 📦 Kurulum ve Çalıştırma
+
+Projeyi çalıştırmak için aşağıdaki adımları takip edin:
+
+### 1️⃣ Veritabanını Başlatın (Docker)
+
+```bash
 docker-compose up -d
-2. Veritabanı Şemasını Oluşturun
-Migration dosyalarını kullanarak tabloları oluşturun:
-
-Bash
-dotnet ef database update
-3. Uygulamayı Çalıştırın
-Uygulamayı başlatın:
-
-Bash
-dotnet run
-Uygulama ayağa kalktığında terminalde belirtilen adresi (örn: http://localhost:5194) tarayıcınızda açabilirsiniz.
-
-📊 Veritabanı Şeması
-Proje 3 temel tablodan oluşmaktadır:
-
-Odalar: Oteldeki oda bilgilerini ve fiyatlarını tutar.
-
-Müşteriler: Konaklayan kişilerin kimlik ve iletişim bilgilerini tutar.
-
-Rezervasyonlar: Müşteri ve oda eşleşmelerini tarih bilgisiyle tutar (Unique Constraint uygulanmıştır).
