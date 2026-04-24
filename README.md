@@ -66,11 +66,3 @@ kullanılarak responsive ve kullanıcı dostu bir arayüz sağlanmıştır.
 
 ---
 
-## 📦 Kurulum ve Çalıştırma
-
-Projeyi çalıştırmak için aşağıdaki adımları takip edin:
-
-### 1️⃣ Veritabanını Başlatın (Docker)
-
-```bash
-docker-compose up -d
